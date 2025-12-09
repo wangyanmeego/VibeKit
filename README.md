@@ -1,73 +1,203 @@
-# React + TypeScript + Vite
+# RoboOpenPlatform - 机器人开放平台
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个现代化的机器人开放平台 Web 应用，提供机器人服务展示、管理和交互功能。
 
-Currently, two official plugins are available:
+## 📖 项目简介
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+RoboOpenPlatform 是一个基于 React 构建的机器人开放平台，旨在为用户提供机器人服务的展示、管理和交互体验。平台包含首页展示、机器人出租车服务、机器人管理、用户登录注册等功能模块，并集成了 3D 可视化场景，为用户提供沉浸式的交互体验。
 
-## React Compiler
+## 🛠️ 技术栈
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 核心框架
+- **React 19.2.0** - 现代化的 React 框架
+- **TypeScript 5.9.3** - 类型安全的 JavaScript 超集
+- **Vite 7.2.4** - 快速的前端构建工具
 
-## Expanding the ESLint configuration
+### UI 框架与样式
+- **Tailwind CSS 4.1.17** - 实用优先的 CSS 框架
+- **Framer Motion 12.23.25** - 强大的动画库
+- **Radix UI** - 无样式的 UI 组件库
+- **Lucide React** - 精美的图标库
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3D 渲染
+- **Three.js 0.181.2** - 3D 图形库
+- **@react-three/fiber 9.4.2** - React 的 Three.js 渲染器
+- **@react-three/drei 10.7.7** - Three.js 实用工具库
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 路由与工具
+- **React Router DOM 7.10.1** - 声明式路由
+- **class-variance-authority** - 组件变体管理
+- **clsx & tailwind-merge** - 类名工具
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 开发工具
+- **ESLint** - 代码质量检查
+- **TypeScript ESLint** - TypeScript 代码检查
+- **PostCSS & Autoprefixer** - CSS 后处理
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📁 目录结构
+
+```
+RoboOpenPlatform/
+├── public/                 # 静态资源目录
+│   └── vite.svg
+├── src/                    # 源代码目录
+│   ├── assets/            # 资源文件（图片、字体等）
+│   │   └── react.svg
+│   ├── components/        # 组件目录
+│   │   ├── 3d/           # 3D 相关组件
+│   │   │   └── Scene.tsx
+│   │   ├── home/         # 首页组件
+│   │   │   ├── Hero.tsx
+│   │   │   └── ServiceShowcase.tsx
+│   │   ├── layout/       # 布局组件
+│   │   │   ├── Footer.tsx
+│   │   │   └── Navbar.tsx
+│   │   └── ui/           # UI 基础组件
+│   │       └── button.tsx
+│   ├── lib/              # 工具函数库
+│   │   └── utils.ts
+│   ├── pages/            # 页面组件
+│   │   ├── Home.tsx      # 首页
+│   │   ├── Login.tsx     # 登录页
+│   │   ├── Register.tsx  # 注册页
+│   │   ├── Robot.tsx     # 机器人页面
+│   │   └── RobotTaxi.tsx # 机器人出租车页面
+│   ├── App.tsx           # 应用主组件
+│   ├── App.css           # 应用样式
+│   ├── index.css         # 全局样式
+│   └── main.tsx          # 应用入口文件
+├── .gitignore            # Git 忽略文件配置
+├── components.json       # 组件配置
+├── eslint.config.js      # ESLint 配置
+├── index.html            # HTML 模板
+├── package.json          # 项目依赖配置
+├── package-lock.json     # 依赖锁定文件
+├── postcss.config.js     # PostCSS 配置
+├── tailwind.config.js    # Tailwind CSS 配置
+├── tsconfig.json         # TypeScript 配置
+├── tsconfig.app.json     # TypeScript 应用配置
+├── tsconfig.node.json    # TypeScript Node 配置
+└── vite.config.ts        # Vite 构建配置
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 开发指南
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 环境要求
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Node.js**: >= 18.0.0
+- **npm**: >= 9.0.0 或 **pnpm**: >= 8.0.0 或 **yarn**: >= 1.22.0
+
+### 安装依赖
+
+```bash
+# 使用 npm
+npm install
+
+# 或使用 pnpm
+pnpm install
+
+# 或使用 yarn
+yarn install
 ```
+
+### 开发模式
+
+启动开发服务器，支持热模块替换（HMR）：
+
+```bash
+npm run dev
+```
+
+开发服务器默认运行在 `http://localhost:5173`
+
+### 构建生产版本
+
+构建优化后的生产版本：
+
+```bash
+npm run build
+```
+
+构建产物将输出到 `dist/` 目录。
+
+### 预览生产构建
+
+预览生产构建结果：
+
+```bash
+npm run preview
+```
+
+### 代码检查
+
+运行 ESLint 检查代码质量：
+
+```bash
+npm run lint
+```
+
+## 🎯 功能模块
+
+### 页面路由
+
+- `/` - 首页，展示平台介绍和服务
+- `/robot-taxi` - 机器人出租车服务页面
+- `/robot` - 机器人管理页面
+- `/login` - 用户登录页面
+- `/register` - 用户注册页面
+
+### 主要组件
+
+- **Hero** - 首页英雄区块，展示平台核心价值
+- **ServiceShowcase** - 服务展示组件
+- **Scene** - 3D 场景组件，提供沉浸式体验
+- **Navbar** - 导航栏组件
+- **Footer** - 页脚组件
+
+## 🔧 配置说明
+
+### 路径别名
+
+项目配置了路径别名 `@` 指向 `src` 目录，方便导入：
+
+```typescript
+import { Navbar } from "@/components/layout/Navbar";
+```
+
+### TypeScript 配置
+
+项目使用多个 TypeScript 配置文件：
+- `tsconfig.json` - 基础配置
+- `tsconfig.app.json` - 应用代码配置
+- `tsconfig.node.json` - Node 环境配置
+
+### Tailwind CSS
+
+使用 Tailwind CSS 4.x 版本，配置文件为 `tailwind.config.js`。
+
+## 📝 开发规范
+
+1. **代码风格**: 使用 ESLint 进行代码检查，遵循项目配置的代码规范
+2. **类型安全**: 所有组件和函数都应使用 TypeScript 类型定义
+3. **组件组织**: 按照功能模块组织组件，保持目录结构清晰
+4. **样式管理**: 优先使用 Tailwind CSS 工具类，必要时使用 CSS 模块
+
+## 🤝 贡献指南
+
+1. Fork 本仓库
+2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 开启 Pull Request
+
+## 📄 许可证
+
+本项目为私有项目。
+
+## 📮 联系方式
+
+如有问题或建议，请通过 Issue 或 Pull Request 联系。
+
+---
+
+**Happy Coding! 🚀**
