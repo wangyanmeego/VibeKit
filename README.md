@@ -1,33 +1,36 @@
-# RoboOpenPlatform - 机器人开放平台
+# AI PRD & 设计生成工具 - 模板项目
 
-一个现代化的机器人开放平台 Web 应用，提供机器人服务展示、管理和交互功能。
+一个专为产品和设计师准备的 React 模板项目，支持通过自然语言（Trae 编辑器）快速生成符合规范的网页原型和设计稿。
 
 ## 📖 项目简介
 
-RoboOpenPlatform 是一个基于 React 构建的机器人开放平台，旨在为用户提供机器人服务的展示、管理和交互体验。平台包含首页展示、机器人出租车服务、机器人管理、用户登录注册等功能模块，并集成了 3D 可视化场景，为用户提供沉浸式的交互体验。
+这是一个 AI-Native 的 React 模板项目，旨在让非技术人员（产品经理、设计师）能够通过自然语言直接构建网页原型。生成的代码符合开发规范，便于后续开发人员无缝接手。
+
+### 核心特性
+
+- ✅ **开箱即用**：完整的项目结构和配置
+- ✅ **组件丰富**：集成 shadcn/ui 组件库（40+ 组件）
+- ✅ **规范明确**：详细的开发规范和最佳实践
+- ✅ **示例完整**：包含示例页面和组件模板
+- ✅ **类型安全**：完整的 TypeScript 支持
+- ✅ **样式规范**：Tailwind CSS + 语义化颜色变量（支持深色模式）
 
 ## 🛠️ 技术栈
 
 ### 核心框架
-- **React 19.2.0** - 现代化的 React 框架
+- **React 19.2.1** - 现代化的 React 框架
 - **TypeScript 5.9.3** - 类型安全的 JavaScript 超集
-- **Vite 7.2.4** - 快速的前端构建工具
+- **Vite 7.2.7** - 快速的前端构建工具
 
 ### UI 框架与样式
 - **Tailwind CSS 4.1.17** - 实用优先的 CSS 框架
+- **shadcn/ui** - 基于 Radix UI 的高质量组件库
 - **Framer Motion 12.23.25** - 强大的动画库
-- **Radix UI** - 无样式的 UI 组件库
 - **Lucide React** - 精美的图标库
 
-### 3D 渲染
-- **Three.js 0.181.2** - 3D 图形库
-- **@react-three/fiber 9.4.2** - React 的 Three.js 渲染器
-- **@react-three/drei 10.7.7** - Three.js 实用工具库
-
-### 路由与工具
+### 状态管理与路由
+- **Zustand 5.0.9** - 轻量级状态管理
 - **React Router DOM 7.10.1** - 声明式路由
-- **class-variance-authority** - 组件变体管理
-- **clsx & tailwind-merge** - 类名工具
 
 ### 开发工具
 - **ESLint** - 代码质量检查
@@ -38,49 +41,40 @@ RoboOpenPlatform 是一个基于 React 构建的机器人开放平台，旨在�
 
 ```
 RoboOpenPlatform/
-├── public/                 # 静态资源目录
-│   └── vite.svg
-├── src/                    # 源代码目录
-│   ├── assets/            # 资源文件（图片、字体等）
-│   │   └── react.svg
-│   ├── components/        # 组件目录
-│   │   ├── 3d/           # 3D 相关组件
-│   │   │   └── Scene.tsx
-│   │   ├── home/         # 首页组件
-│   │   │   ├── Hero.tsx
-│   │   │   └── ServiceShowcase.tsx
-│   │   ├── layout/       # 布局组件
-│   │   │   ├── Footer.tsx
-│   │   │   └── Navbar.tsx
-│   │   └── ui/           # UI 基础组件
-│   │       └── button.tsx
-│   ├── lib/              # 工具函数库
-│   │   └── utils.ts
-│   ├── pages/            # 页面组件
-│   │   ├── Home.tsx      # 首页
-│   │   ├── Login.tsx     # 登录页
-│   │   ├── Register.tsx  # 注册页
-│   │   ├── Robot.tsx     # 机器人页面
-│   │   └── RobotTaxi.tsx # 机器人出租车页面
-│   ├── App.tsx           # 应用主组件
-│   ├── App.css           # 应用样式
-│   ├── index.css         # 全局样式
-│   └── main.tsx          # 应用入口文件
-├── .gitignore            # Git 忽略文件配置
-├── components.json       # 组件配置
-├── eslint.config.js      # ESLint 配置
-├── index.html            # HTML 模板
-├── package.json          # 项目依赖配置
-├── package-lock.json     # 依赖锁定文件
-├── postcss.config.js     # PostCSS 配置
-├── tailwind.config.js    # Tailwind CSS 配置
-├── tsconfig.json         # TypeScript 配置
-├── tsconfig.app.json     # TypeScript 应用配置
-├── tsconfig.node.json    # TypeScript Node 配置
-└── vite.config.ts        # Vite 构建配置
+├── .trae/                    # Trae 编辑器配置
+│   └── rules/                # AI 规则文件
+│       └── project_rules.md  # 项目开发规则
+├── docs/                     # 文档目录
+│   ├── 开发规范.md          # 开发规范文档
+│   └── 组件使用指南.md      # 组件使用指南
+├── public/                   # 静态资源目录
+├── src/                      # 源代码目录
+│   ├── assets/              # 资源文件（图片、字体等）
+│   ├── components/          # 组件目录
+│   │   ├── ui/             # shadcn/ui 基础组件
+│   │   └── biz/           # 跨页面复用的业务组件
+│   ├── lib/                # 工具函数库
+│   │   ├── mock/          # Mock 数据
+│   │   └── utils.ts       # 工具函数
+│   ├── pages/             # 页面组件
+│   │   └── [FeatureName]/ # 功能页面目录
+│   │       ├── index.tsx  # 页面入口
+│   │       └── components/ # 页面独有组件
+│   ├── router/            # 路由配置
+│   ├── store/             # 状态管理
+│   ├── types/             # 全局类型定义
+│   ├── App.tsx            # 应用主组件
+│   ├── index.css          # 全局样式
+│   └── main.tsx           # 应用入口文件
+├── 产品设计协作手册.md    # 产品/设计师使用指南
+├── components.json        # shadcn/ui 配置
+├── eslint.config.js       # ESLint 配置
+├── tailwind.config.js     # Tailwind CSS 配置
+├── tsconfig.json          # TypeScript 配置
+└── vite.config.ts         # Vite 构建配置
 ```
 
-## 🚀 开发指南
+## 🚀 快速开始
 
 ### 环境要求
 
@@ -136,32 +130,58 @@ npm run preview
 npm run lint
 ```
 
-## 🎯 功能模块
+## 📚 使用指南
 
-### 页面路由
+### 对于产品/设计师
 
-- `/` - 首页，展示平台介绍和服务
-- `/robot-taxi` - 机器人出租车服务页面
-- `/robot` - 机器人管理页面
-- `/login` - 用户登录页面
-- `/register` - 用户注册页面
+请先阅读 **[产品设计协作手册.md](./产品设计协作手册.md)**，了解如何使用 Trae 编辑器通过自然语言生成页面。
 
-### 主要组件
+### 对于开发人员
 
-- **Hero** - 首页英雄区块，展示平台核心价值
-- **ServiceShowcase** - 服务展示组件
-- **Scene** - 3D 场景组件，提供沉浸式体验
-- **Navbar** - 导航栏组件
-- **Footer** - 页脚组件
+请阅读以下文档了解项目规范：
+
+1. **[开发规范.md](./docs/开发规范.md)** - 详细的开发规范和最佳实践
+2. **[组件使用指南.md](./docs/组件使用指南.md)** - 组件使用示例和说明
+
+## 🎯 核心工作流
+
+### 1. 创建新页面
+
+在 Trae 编辑器中，你可以这样告诉 AI：
+
+```
+帮我新建一个订单列表页面。
+这个页面包含：
+- 搜索框
+- 筛选器（状态、日期）
+- 数据表格（显示订单号、金额、状态、创建时间）
+- 分页组件
+请用 Mock 数据填充表格，生成 10 条示例数据。
+```
+
+### 2. Mock 数据规范
+
+- **简单页面**：在文件顶部定义 `// --- Mock Data ---` 区域
+- **复杂页面**：提取到 `src/lib/mock/[feature].ts`
+
+### 3. TODO 标记
+
+所有需要开发人员对接的地方必须添加 TODO 标记：
+
+```typescript
+// TODO: [Dev] 对接真实 API 接口
+// TODO: [Dev] 处理表单提交逻辑
+```
 
 ## 🔧 配置说明
 
 ### 路径别名
 
-项目配置了路径别名 `@` 指向 `src` 目录，方便导入：
+项目配置了路径别名 `@` 指向 `src` 目录：
 
 ```typescript
-import { Navbar } from "@/components/layout/Navbar";
+import { Button } from '@/components/ui/button';
+import { useAppStore } from '@/store/useAppStore';
 ```
 
 ### TypeScript 配置
@@ -173,14 +193,45 @@ import { Navbar } from "@/components/layout/Navbar";
 
 ### Tailwind CSS
 
-使用 Tailwind CSS 4.x 版本，配置文件为 `tailwind.config.js`。
+使用 Tailwind CSS 4.x 版本，支持：
+- 语义化颜色变量（支持深色模式）
+- 自定义主题色（tech-blue, neon-purple）
+- 自定义动画和工具类
 
-## 📝 开发规范
+### 环境变量
 
-1. **代码风格**: 使用 ESLint 进行代码检查，遵循项目配置的代码规范
-2. **类型安全**: 所有组件和函数都应使用 TypeScript 类型定义
-3. **组件组织**: 按照功能模块组织组件，保持目录结构清晰
-4. **样式管理**: 优先使用 Tailwind CSS 工具类，必要时使用 CSS 模块
+复制 `env.example` 为 `.env` 并配置环境变量：
+
+```bash
+cp env.example .env
+```
+
+## 📝 开发规范要点
+
+1. **严禁在 JSX 中写死数据**，必须使用 Mock 数据
+2. **严禁创建 `.css` 文件**，必须使用 Tailwind CSS
+3. **严禁使用行内样式** `style={{}}`
+4. **必须使用语义化颜色变量**，支持深色模式
+5. **必须添加 TODO 标记**，标注需要开发人员对接的地方
+
+详细规范请查看 [开发规范.md](./docs/开发规范.md)
+
+## 🎨 可用组件
+
+项目已集成 shadcn/ui 组件库，包含 40+ 高质量组件：
+
+- Button, Card, Input, Dialog, Table, Form
+- Select, Tabs, Badge, Avatar, Alert, Toast
+- 等等...
+
+查看完整列表和使用示例：[组件使用指南.md](./docs/组件使用指南.md)
+
+## 📄 相关文档
+
+- [产品设计协作手册.md](./产品设计协作手册.md) - 产品/设计师使用指南
+- [docs/开发规范.md](./docs/开发规范.md) - 开发规范文档
+- [docs/组件使用指南.md](./docs/组件使用指南.md) - 组件使用指南
+- [.trae/rules/project_rules.md](./.trae/rules/project_rules.md) - Trae AI 规则
 
 ## 🤝 贡献指南
 
@@ -193,10 +244,6 @@ import { Navbar } from "@/components/layout/Navbar";
 ## 📄 许可证
 
 本项目为私有项目。
-
-## 📮 联系方式
-
-如有问题或建议，请通过 Issue 或 Pull Request 联系。
 
 ---
 
