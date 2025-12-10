@@ -1,10 +1,5 @@
-import { Outlet } from 'react-router-dom';
+import AppRouter from "@/router"
 
-/**
- * 应用主组件
- */
-function App() {
-  return <Outlet />;
+export default function App() {
+  return <AppRouter />
 }
-
-export default App;
